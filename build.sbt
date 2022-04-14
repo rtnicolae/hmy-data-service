@@ -6,6 +6,9 @@ ThisBuild / publishMavenStyle := false
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
+lazy val `service` = project
+  .settings(mainSettings)
+  .settings(libraryDependencies ++= Dependencies.main)
 val mainSettings = Seq(
   scalacOptions := Seq(
     "-deprecation",
@@ -17,7 +20,3 @@ val mainSettings = Seq(
     "-Xfatal-warnings",
   )
 )
-
-lazy val `service` = project
-  .settings(mainSettings)
-  .settings(libraryDependencies ++= Dependencies.main)

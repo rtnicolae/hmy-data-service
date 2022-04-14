@@ -2,7 +2,7 @@ package http
 
 import com.typesafe.scalalogging.LazyLogging
 import conf.Conf.HmyRpcConfig
-import crypto.KeccakImpl
+import crypto.KeccakWrapper
 import model.{ContractCallInfo, HmyCall}
 import zio._
 import zio.json.EncoderOps
@@ -31,14 +31,13 @@ class HmyContractsService(rpc: HmyRpcConfig) extends ContractsService {
     logger.debug(s"Full contract data: $data")
 
     HmyCall(
-      params =
-        (
-          ContractCallInfo(address, data),
-          "latest"
-        )
+      params = (
+        ContractCallInfo(address, data),
+        "latest",
+      )
     )
   }
 
-  private def sigHash(unhashed: String) = KeccakImpl.hash(unhashed, "UTF-8").substring(0, 8)
+  private def sigHash(unhashed: String) = KeccakWrapper.hash(unhashed, "UTF-8").substring(0, 8)
 
 }

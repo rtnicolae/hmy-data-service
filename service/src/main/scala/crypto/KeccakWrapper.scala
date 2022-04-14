@@ -5,9 +5,9 @@ import org.bouncycastle.jcajce.provider.digest.Keccak
 import org.bouncycastle.jce.provider.BouncyCastleProvider
 import org.bouncycastle.util.encoders.Hex
 
-import java.security.{MessageDigest, Security}
+import java.security.Security
 
-object KeccakImpl extends HashFunction with LazyLogging {
+object KeccakWrapper extends HashFunction with LazyLogging {
 
   override def hash(str: String, encoding: String): String = {
     Security.addProvider(new BouncyCastleProvider())

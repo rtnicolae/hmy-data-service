@@ -3,6 +3,7 @@ import sbt._
 object Dependencies {
   object v {
     val ZIO = "1.0.12"
+    val ZIOJson = "latest.release"
     val PureConfig = "0.16.0"
     val Logback = "1.2.3"
     val Logging = "3.9.4"
@@ -16,6 +17,7 @@ object Dependencies {
     object zio {
       val Core = "dev.zio" %% "zio" % v.ZIO
       val Streams = "dev.zio" %% "zio-streams" % v.ZIO
+      val Json = "dev.zio" %% "zio-json" % v.ZIOJson
     }
 
     object logging {
@@ -37,12 +39,13 @@ object Dependencies {
   val main = Seq(
     lib.zio.Core,
     lib.zio.Streams,
+    lib.zio.Json,
     lib.PureConfig,
     lib.Requests,
     lib.ScalaTest,
     lib.logging.Logback,
     lib.logging.ScalaLogging,
     lib.bouncyCastle.Kix,
-    lib.bouncyCastle.Rov
+    lib.bouncyCastle.Rov,
   )
 }

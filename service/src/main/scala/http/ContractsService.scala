@@ -37,8 +37,8 @@ class HmyContractsService(rpc: HmyRpcConfig) extends ContractsService {
     logger.debug(s"Contract Response: $resp")
 
     done match {
-      case Left(cause) => Left(new Exception(cause))
-      case _           => _
+      case Left(value) => Left(new Exception(value))
+      case Right(value) => Right(value)
     }
   }
 

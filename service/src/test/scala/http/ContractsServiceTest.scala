@@ -13,14 +13,14 @@ class ContractsServiceTest extends AnyFlatSpec with LazyLogging {
   it should "build the contract call" in {
     val contract = "0x22d62b19b7039333ad773b7185bb61294f3adc19"
     val method   = "balanceOf(address)"
-    val paramWho = "0xC8Fd6cF68d953A5e55f95472D79044d3937768A9"
+    val paramWho = ""
     val res      = ContractsCallBuilder.buildContractCall(contract, method, Seq(paramWho))
 
     logger.info(s"${res.toJsonPretty}")
   }
 
   it should "make the contract call" in {
-    val contractCall = service.callContract("0x22d62b19b7039333ad773b7185bb61294f3adc19", "balanceOf(address)", Seq("0xC8Fd6cF68d953A5e55f95472D79044d3937768A9"))
+    val contractCall = service.callContract("0x22d62b19b7039333ad773b7185bb61294f3adc19", "balanceOf(address)", Seq(""))
 
     val x = zio.Runtime.default.unsafeRun(
       contractCall

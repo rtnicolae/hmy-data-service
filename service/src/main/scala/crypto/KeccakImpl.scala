@@ -7,7 +7,7 @@ import org.bouncycastle.util.encoders.Hex
 
 import java.security.{MessageDigest, Security}
 
-object KeccakImpl extends HashFunction with LazyLogging {
+class KeccakImpl extends HashFunction with LazyLogging {
 
   override def hash(str: String, encoding: String): String = {
     Security.addProvider(new BouncyCastleProvider())

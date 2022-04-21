@@ -5,6 +5,7 @@ ThisBuild / publish / skip := true
 ThisBuild / publishMavenStyle := false
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
+scalafmtOnCompile := true
 
 lazy val `service` = project
   .settings(mainSettings)
